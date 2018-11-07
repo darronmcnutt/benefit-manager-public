@@ -1,0 +1,29 @@
+<div *ngIf="patronResults | async as patron">
+  
+    <h3>{{ patron.id }}: {{ patron.firstName }} {{ patron.lastName }}</h3>
+  
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Item</th>
+          <th scope="col">Market Value</th>
+          <th scope="col">Purchase Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of itemResults | async">
+          <th scope="row">{{ item.id }}</th>
+          <td>{{ item.description }}</td>
+          <td>{{ item.marketValue | currency }}</td>
+          <td>{{ item.purchasePrice | currency }}</td>
+        </tr>
+        <tr>
+            <th scope="row"></th>
+            <td><b>TOTAL</b></td>
+            <td><b>{{ marketTotal | async | currency }}</b></td>
+            <td><b>{{ purchaseTotal | async | currency }}</b></td>
+        </tr>
+      </tbody>
+    </table>
+</div>

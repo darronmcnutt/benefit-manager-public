@@ -1,0 +1,20 @@
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Item</th>
+      <th scope="col">Market Value</th>
+      <th scope="col">Purchase Price</th>
+      <th scope="col">Owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items | async">
+      <th scope="row">{{ item.id }}</th>
+      <td>{{ item.description }}</td>
+      <td>{{ item.marketValue | currency }}</td>
+      <td [ngClass]="{ 'table-warning': item.purchasePrice == 0}">{{ item.purchasePrice | currency }}</td>
+      <td [ngClass]="{ 'table-warning': item.owner == '0'}">{{ item.owner }}</td>
+    </tr>
+  </tbody>
+</table>

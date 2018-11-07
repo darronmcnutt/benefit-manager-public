@@ -1,0 +1,27 @@
+<h1>Merge Receipts</h1>
+<form [formGroup]="mergeForm" 
+      (ngSubmit)="onSubmit(mergeForm.value); mergeForm.reset()"
+      class="form-inline">
+    
+  <label for="fromPatronID"></label>
+  <input type="text" 
+        class="form-control"
+        id="fromPatronID" 
+        placeholder="From Patron ID" 
+        [formControl]="mergeForm.controls['fromPatronID']" autofocus>
+
+  <label for="toPatronID"></label>
+  <input type="text" 
+        class="form-control"
+        id="toPatronID" 
+        placeholder="To Patron ID" 
+        [formControl]="mergeForm.controls['toPatronID']">
+  <button type="submit" class="btn btn-primary" [disabled]="!mergeForm.valid">Submit</button>
+</form>
+
+<div *ngIf="fromPatronID && toPatronID">
+      <h1>From Patron:</h1>
+      <app-receipt-view [patronID]="fromPatronID"></app-receipt-view>
+      <h1>To Patron:</h1>
+      <app-receipt-view [patronID]="toPatronID"></app-receipt-view>
+</div>

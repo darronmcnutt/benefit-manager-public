@@ -1,0 +1,57 @@
+<h1>Enter Live Auction Results</h1>
+<div class="form-group">
+  <form [formGroup]="resultsForm" (ngSubmit)="onSubmit(resultsForm.value); resultsForm.reset()">
+    
+    <label for="descriptionInput"></label>
+    <input type="text" 
+          class="form-control"
+          id="descriptionInput" 
+          placeholder="Item Description" 
+          [formControl]="resultsForm.controls['description']" autofocus>
+
+      <label for="itemIDInput"></label>
+      <input type="text" 
+            class="form-control"
+            id="itemIDInput" 
+            placeholder="Item ID" 
+            [formControl]="resultsForm.controls['itemID']">
+
+    <label for="patronIDInput"></label>
+    <input type="text" 
+          class="form-control"
+          id="patronIDInput" 
+          placeholder="Patron ID" 
+          [formControl]="resultsForm.controls['patronID']">
+
+    <label for="purchasePriceInput"></label>
+    <input type="text" 
+          class="form-control"
+          id="purchasePriceInput" 
+          placeholder="Purchase Price" 
+          [formControl]="resultsForm.controls['purchasePrice']">
+    <button type="submit" class="btn btn-primary" [disabled]="!resultsForm.valid">Submit</button>
+  </form>
+</div>
+
+<h3>Live Auction Entry History for Current Session</h3>
+
+<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">itemID</th>
+        <th scope="col">description</th>
+        <th scope="col">patronID</th>
+        <th scope="col">purchasePrice</th>
+        <th scope="col">timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let history of auctionHistory | async">
+        <td>{{ history.itemID }}</td>
+        <td>{{ history.description }}</td>
+        <td>{{ history.patronID }}</td>
+        <td>{{ history.purchasePrice }}</td>
+        <td>{{ history.timestamp | date:'full' }}</td>
+      </tr>
+    </tbody>
+  </table>

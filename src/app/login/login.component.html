@@ -1,0 +1,26 @@
+<div *ngIf="afAuth.user | async as user; else showLogin">
+    <span class="navbar-text mr-sm-2">Hello, {{ user.displayName }}!</span>
+    <button (click)="logout()" class="btn btn-light my-2 my-sm-0">Logout</button>
+</div>
+
+<ng-template #showLogin>
+  <form [formGroup]="loginForm" 
+        class="form-inline"
+        (ngSubmit)="login(loginForm.value); loginForm.reset()">
+      
+    <label for="email"></label>
+    <input type="text" 
+          class="form-control mr-sm-2"
+          id="email" 
+          placeholder="Email address" 
+          [formControl]="loginForm.controls['email']" autofocus>
+
+    <label for="password"></label>
+    <input type="password" 
+          class="form-control mr-sm-2"
+          id="password" 
+          placeholder="Password" 
+          [formControl]="loginForm.controls['password']">
+    <button type="submit" class="btn btn-light my-2 my-sm-0" [disabled]="!loginForm.valid">Login</button>
+  </form>
+</ng-template>

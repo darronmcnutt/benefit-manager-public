@@ -1,0 +1,18 @@
+<h1>Receipt lookup by patron ID</h1>
+<div class="form-group">
+  <form [formGroup]="idForm" 
+        (ngSubmit)="onSubmit(idForm.value); idForm.reset()"
+        class="form-inline">
+    <label for="patronIDInput"></label>
+    <input type="text" 
+          class="form-control"
+          id="patronIDInput" 
+          placeholder="Patron ID" 
+          [formControl]="idForm.controls['patronID']" autofocus>
+    <button type="submit" class="btn btn-primary" [disabled]="!idForm.valid">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="patronID">
+  <app-receipt-view [patronID]="patronID"></app-receipt-view>
+</div>

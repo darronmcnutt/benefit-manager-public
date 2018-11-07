@@ -1,0 +1,22 @@
+<h1>Silent Auction Entry History for Current Session</h1>
+<p>User ID: {{ userID }}<br>Session ID: {{ ls.sessionID }}<p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">itemID</th>
+        <th scope="col">patronID</th>
+        <th scope="col">purchasePrice</th>
+        <th scope="col">timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let history of auctionHistory | async">
+        <td>{{ history.itemID }}</td>
+        <td>{{ history.patronID }}</td>
+        <td>{{ history.purchasePrice }}</td>
+        <td>{{ history.timestamp | date:'full' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>NOTE: a new history session is created each time the user refreshes the browser even if the user is still logged in to Firebase</p>

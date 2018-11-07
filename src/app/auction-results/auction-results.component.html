@@ -1,0 +1,27 @@
+<h1>Enter Auction Results</h1>
+<div class="form-group">
+  <form [formGroup]="resultsForm" (ngSubmit)="onSubmit(resultsForm.value); resultsForm.reset()">
+    
+    <label for="itemIDInput"></label>
+    <input type="text" 
+          class="form-control"
+          id="itemIDInput" 
+          placeholder="Item ID" 
+          [formControl]="resultsForm.controls['itemID']" autofocus>
+
+    <label for="patronIDInput"></label>
+    <input type="text" 
+          class="form-control"
+          id="patronIDInput" 
+          placeholder="Patron ID" 
+          [formControl]="resultsForm.controls['patronID']">
+
+    <label for="purchasePriceInput"></label>
+    <input type="text" 
+          class="form-control"
+          id="purchasePriceInput" 
+          placeholder="Purchase Price" 
+          [formControl]="resultsForm.controls['purchasePrice']">
+    <button type="submit" class="btn btn-primary" [disabled]="!resultsForm.valid">Submit</button>
+  </form>
+</div>

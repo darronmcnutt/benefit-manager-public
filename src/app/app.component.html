@@ -1,0 +1,18 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">RCM</a>
+    <div class="navbar-nav" style="display: inline-block">    
+            <a [routerLink]="['/items']" class="nav-link">Items</a>
+            <a [routerLink]="['/patrons']" class="nav-link">Patrons</a>
+            <a [routerLink]="['/receipt']" class="nav-link">Receipts</a>
+            <a [routerLink]="['/merge']" class="nav-link">Merge Receipts</a>
+            <a [routerLink]="['/auction-results']" class="nav-link">Silent Auction</a>
+            <a [routerLink]="['/live-auction']" class="nav-link">Live Auction</a>
+            <a [routerLink]="['/upload']" class="nav-link">Upload Data</a>
+            <a [routerLink]="['/history']" class="nav-link">History</a>
+    </div>
+    <app-login></app-login>
+</nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
